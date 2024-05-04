@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Import the necessary modules
 from flask import Flask, render_template, request, session
 from forms import LoginForm
