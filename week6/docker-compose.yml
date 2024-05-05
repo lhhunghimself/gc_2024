@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  web:
+    image: lhhung/nginx:week6_2024
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    restart: always
+  app:
+    image: lhhung/node:week6_2024
+    build: ./
+    restart: always
+    ports:
+      - "8000:8000"
+    command: gunicorn -b 0.0.0.0:8000 app:app
