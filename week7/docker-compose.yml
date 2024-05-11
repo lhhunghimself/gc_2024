@@ -1,0 +1,41 @@
+version: '3.1'
+services:
+  web:
+    image: lhhung/nginx:week6_2024
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    restart: always
+    profiles: ['production']
+  app:
+    image: lhhung/flask:week6_2024
+    build: ./
+    restart: always
+    ports:
+      - "8000:8000"
+    command: gunicorn -b 0.0.0.0:8000 app:app
+    profiles: ['production']
+  app-test:
+    image: lhhung/flask:week6_2024
+    build: ./
+    restart: always
+    volumes:
+      - ./:/local
+    ports:
+      - "80:5000"
+    command: python3 /local/app_test.py
+    profiles: ['test']
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      POSTGRES_USER: lhhung
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pglogindb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data 
+    profiles: ["test","production"]     
