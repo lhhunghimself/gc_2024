@@ -47,6 +47,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Login</a>
+				<a class="nav-link" href="#">Logout</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a
@@ -64,6 +65,9 @@
                                 >
                                     <a class="dropdown-item" href="{{ url_for('showCoffeeShops')}}?city='Tacoma'"
                                         >Tacoma</a
+                                    >
+				    <a class="dropdown-item" href="{{ url_for('showCoffeeShops')}}?city='Olympia'"
+                                        >Olympia</a
                                     >
                                     <a class="dropdown-item" href="{{ url_for('showCoffeeShops')}}?city='Seattle'"
                                         >Seattle</a

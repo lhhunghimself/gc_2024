@@ -35,6 +35,11 @@ def login():
         if ('city' in session):
             session.pop('city')
     return render_template('login.html',form=form)
+@app.route("/logout")# added
+@login_required
+def logout():
+    session.pop('city',None)
+    return redirect(url_for('login'))#added
 # Run the application if this script is being run directly
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug='True', port=5000)

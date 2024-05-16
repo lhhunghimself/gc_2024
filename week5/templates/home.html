@@ -31,7 +31,9 @@
                           <div class="col-md-8">
                             <div class="card-body">
                               <h5 class="card-title">{{coffeeShops[0].name}}</h5>
-                              <p class="card-text">{{coffeeShops[0].location.display_address[0]}}</p>
+                               {% for line in coffeeShops[0].location.display_address %}
+                                    <p class="card-text">{{ line }}</p>
+                               {% endfor %}
                               <p class="card-text"><small class="text-body-secondary">Rating {{coffeeShops[0].rating}}</small></p>
                             </div>
                           </div>
@@ -48,7 +50,9 @@
                           <div class="col-md-8">
                             <div class="card-body">
                               <h5 class="card-title">{{business.name}}</h5>
-                              <p class="card-text">{{business.location.display_address[0]}}</p>
+                              {% for line in business.location.display_address %}
+                                    <p class="card-text">{{ line }}</p>
+                              {% endfor %}
                               <p class="card-text"><small class="text-body-secondary">Rating {{business.rating}}</small></p>
                             </div>
                           </div>
